@@ -1,0 +1,67 @@
+
+	-- INSERTS SIN ID--- (cuando es autoincrement) 
+
+INSERT INTO APP.BOOKS (TITLE, AUTHOR, GENRE, SELLINGDATE, PRICE, LIKES, COVERPAGE)
+	VALUES ('Mistborn 1: The final Empire', 'Brandon Sanderson', 'epic fantasy', '2006-07-17', 8.50, 5,'./img/CPmistborn1.jpg'),
+('Mistborn 2: The Well of Ascension', 'Brandon Sanderson', 'epic fantasy', '2007-08-21', 10.00, 4, './img/CPmistborn2.jpg'),
+('Mistborn 3: The Hero of Ages', 'Brandon Sanderson', 'epic fantasy', '2008-10-14', 12.50, 12, './img/CPmistborn3.png'),
+('Service oriented architecture: SOA strategy, methodology, and technology', 'James P. Lawler, H. Howler-Barber.', '', '2007-01-01', 50.00, 7, './img/bookAS1.jpg'),
+('Software architecture in practice', 'Len Bass, Paul Clements, Rick Kazman.', '', '2012-09-25', 36.00, 5, './img/BookAS2.jpg'),
+('Patterns of enterprise application architecture ', 'Martin Fowler', '', '2012-01-01', 52.00, 4, './img/bookAS3.jpg'),
+('The Kingkiller Chronicle', 'Patrick Rothfuss', 'Heroic fantasy', '2007-03-27', 12.50, 12, './img/CPTheKingkillerChronicle1.jpg\r\n'),
+('The Wise Mans Fear', 'Patrick Rothfuss', 'Heroic fantasy', '2011-05-01', 10.00, 8, './img/CPTheKingkillerChronicle2.jpg'),
+('it', 'Stephen King', 'Horror', '1986-09-15', 12.70, 2, './img/it.jpg'),
+('The Lord of the Rings', 'John Ronald Reuel Tolkien', 'epic fantasy', '1954-01-01', 10.50, 8,'./img/SDLA1.jpg'),
+	('The Two Towers', 'John Ronald Reuel Tolkien', 'epic fantasy', '1954-11-11', 10.50, 10,'./img/SDLA2.jpg'),
+	('The Return of the King', 'John Ronald Reuel Tolkien', 'epic fantasy', '1955-10-20', 10.50, 7,'./img/SDLA3.jpg'),
+('The Shining', 'Stephen King', 'horror', '1977-01-01', 6, 4,'./img/TheShining.jpg'),
+	('Pet Sematary', 'Stephen King', 'horror', '1983-11-14', 6, 4,'./img/PetSematary.jpg'),
+	('A Game of Thrones', 'George Raymond Richard Martin', 'epic fantasy', '1996-08-01', 8, 4,'./img/GOT1.jpg'),
+	('A Clash of Kings', 'George Raymond Richard Martin', 'epic fantasy', '1998-01-01', 8, 7,'./img/GOT2.jpg'),
+	('National Geographic Backyard Guide to the Night Sky', 'Howard A. Schneider, Andrew Fazekas', 'astronomy', '2019-01-01', 19.50, 10,'./img/NG1.jpg');
+	
+
+
+INSERT INTO APP.USERS ( FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ADMIN, ACCOUNT) 
+VALUES ('Admin', 'admin', 'Adming@hotmail.com', '1', 1, 0.0),
+('Miguel' ,'Bercian', 'miguel.berciano101@ulpgc.es', '1', 1, 0.0);
+
+	--- INSERTS ---
+
+INSERT INTO APP.BOOKS (ID, TITLE, AUTHOR, GENRE, SELLINGDATE, PRICE, LIKES, COVERPAGE)
+	VALUES (1, 'Mistborn 1: The final Empire', 'Brandon Sanderson', 'epic fantasy', '2006-07-17', 8.50, 5,'./img/CPmistborn1.jpg'),
+(2, 'Mistborn 2: The Well of Ascension', 'Brandon Sanderson', 'epic fantasy', '2007-08-21', 10.00, 4, './img/CPmistborn2.jpg'),
+(3, 'Mistborn 3: The Hero of Ages', 'Brandon Sanderson', 'epic fantasy', '2008-10-14', 12.50, 12, './img/CPmistborn3.png'),
+(4, 'Service oriented architecture: SOA strategy, methodology, and technology', 'James P. Lawler, H. Howler-Barber.', '', '2007-01-01', 50.00, 7, './img/bookAS1.jpg'),
+(5, 'Software architecture in practice', 'Len Bass, Paul Clements, Rick Kazman.', '', '2012-09-25', 36.00, 5, './img/BookAS2.jpg'),
+(6, 'Patterns of enterprise application architecture ', 'Martin Fowler', '', '2012-01-01', 52.00, 4, './img/bookAS3.jpg'),
+(7, 'The Kingkiller Chronicle', 'Patrick Rothfuss', 'Heroic fantasy', '2007-03-27', 12.50, 12, './img/CPTheKingkillerChronicle1.jpg\r\n'),
+(8, 'The Wise Mans Fear', 'Patrick Rothfuss', 'Heroic fantasy', '2011-05-01', 10.00, 8, './img/CPTheKingkillerChronicle2.jpg'),
+(9, 'it', 'Stephen King', 'Horror', '1986-09-15', 12.70, 2, './img/it.jpg');
+
+INSERT INTO APP.USERS (ID, FIRSTNAME, LASTNAME, EMAIL, PASSWORD, ADMIN, ACCOUNT) 
+VALUES (1, 'Admin', 'admin', 'Adming@hotmail.com', '1', 1, 0.0),
+(2, 'Miguel' ,'Bercian', 'miguel.berciano101@ulpgc.es', '1', 1, 0.0);
+
+
+
+	-- FOREIGN KEY --
+
+Alter Table APP.COMMENTS
+Add FOREIGN KEY (IDBOOK)
+References APP.BOOKS (ID); 
+
+Alter Table APP.LIKES
+Add FOREIGN KEY (IDBOOK)
+References APP.BOOKS (ID); 
+
+Alter Table APP.WHISHLIST
+Add FOREIGN KEY (IDBOOK)
+References APP.BOOKS (ID); 
+
+
+
+	-- INDEX AUTOINCREMENT ---
+
+GENERATED ALWAYS AS IDENTITY
+        (START WITH 1, INCREMENT BY 1), 
